@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
+import { url } from "../Constants";
 
 export default class EditExercise extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class EditExercise extends Component {
 
   componentDidMount(){
 
-    axios.get('http://localhost:5000/exercises/'+this.props.match.params.id)
+    axios.get(`${url}/exercises/`+this.props.match.params.id)
     // Here we are extracting the id directly from url
     .then(response=>{
         this.setState({
@@ -40,7 +41,7 @@ export default class EditExercise extends Component {
         console.log(error)
     })
 
-    axios.get('http://localhost:5000/users/')
+    axios.get(`${url}/users/`)
     .then(response =>{
       if(response.data.length > 0){
         this.setState({
@@ -87,7 +88,7 @@ export default class EditExercise extends Component {
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/exercises/update/'+this.props.match.params.id, exercise)
+    axios.post(`${url}/exercises/update/`+this.props.match.params.id, exercise)
     .then(res => console.log(res.data))
 
     window.location = "/";

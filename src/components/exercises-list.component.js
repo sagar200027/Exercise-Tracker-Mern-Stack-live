@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { url } from "../Constants";
 
 const Exercise = (props) => {
   return (
@@ -38,7 +39,7 @@ export default class ExerciseList extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/exercises/")
+      .get(`${url}/exercises/`)
       .then((response) => {
         this.setState({
           exercises: response.data,
@@ -51,7 +52,7 @@ export default class ExerciseList extends Component {
 
   deleteExercise(id) {
     axios
-      .delete("http://localhost:5000/exercises/" + id)
+      .delete(`${url}/exercises/` + id)
       .then((res) => console.log(res.data));
 
     this.setState({

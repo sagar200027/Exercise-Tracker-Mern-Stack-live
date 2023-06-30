@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { url } from '../Constants';
 
 export default class CreateUser extends Component {
 
@@ -29,9 +30,9 @@ export default class CreateUser extends Component {
           username: this.state.username
         };
         
-        console.log(user);
+        console.log('username',user);
     
-        axios.post('http://localhost:5000/users/add', user)
+        axios.post(`${url}/users/add`, user)
         .then(res => console.log(res.data))
 
     

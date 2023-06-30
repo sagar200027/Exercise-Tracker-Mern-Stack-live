@@ -1,0 +1,1 @@
+export const url="https://celebrated-lokum-251409.netlify.app"
